@@ -1,18 +1,18 @@
-import {Button, Card, Checkbox, Col, DatePicker, Form, Icon, Input, Popover, Row, Select} from 'antd';
-import React, {Component} from 'react';
+import { Button, Card, Checkbox, Col, DatePicker, Form, Icon, Input, Popover, Row, Select } from 'antd';
+import React, { Component } from 'react';
 
-import {Dispatch} from 'redux';
-import {FormComponentProps} from 'antd/es/form';
-import {PageHeaderWrapper} from '@ant-design/pro-layout';
-import {connect} from 'dva';
+import { Dispatch } from 'redux';
+import { FormComponentProps } from 'antd/es/form';
+import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import { connect } from 'dva';
 import TextArea from 'antd/lib/input/TextArea';
+import moment from 'moment';
 import FooterToolbar from './components/FooterToolbar';
 import styles from './style.less';
-import {IPatientsInformation} from './data.d';
-import moment from 'moment';
+import { IPatientsInformation } from './data.d';
 
-const {Option} = Select;
-const {RangePicker} = DatePicker;
+const { Option } = Select;
+const { RangePicker } = DatePicker;
 const beginDay = new Date().getTime();
 
 const fieldLabels = {
@@ -63,38 +63,38 @@ const tableData = [
 ];
 
 const allergicMedicines = [
-  {label: 'Penicillin', value: 'Penicillin'},
-  {label: 'Sulfa', value: 'Sulfa'},
-  {label: 'Aspirin', value: 'Aspirin'},
-  {label: 'Iodine', value: 'Iodine'},
-  {label: 'Local Anaesthetic', value: 'Local Anaesthetic'},
-  {label: 'Ibuprofen', value: 'Ibuprofen'},
+  { label: 'Penicillin', value: 'Penicillin' },
+  { label: 'Sulfa', value: 'Sulfa' },
+  { label: 'Aspirin', value: 'Aspirin' },
+  { label: 'Iodine', value: 'Iodine' },
+  { label: 'Local Anaesthetic', value: 'Local Anaesthetic' },
+  { label: 'Ibuprofen', value: 'Ibuprofen' },
 ];
 
 const diseaseList = [
-  {label: 'AIDS', value: 'AIDS'},
-  {label: 'Cancer', value: 'Cancer'},
-  {label: 'Liver Disease', value: 'Liver Disease'},
-  {label: 'TB', value: 'TB'},
-  {label: 'Asthma', value: 'Asthma'},
-  {label: 'Diabetes', value: 'Diabetes'},
-  {label: 'Kidney Disease', value: 'Kidney Disease'},
-  {label: 'Rheumatic Fever', value: 'Rheumatic Fever'},
-  {label: 'Arthritis', value: 'Arthritis'},
-  {label: 'Epilepsy', value: 'Epilepsy'},
-  {label: 'Psychiatric Treatment', value: 'Psychiatric Treatment'},
-  {label: 'Thyroid Problems', value: 'Thyroid Problems'},
-  {label: 'Blood Disease', value: 'Blood Disease'},
-  {label: 'Hepatitis', value: 'Hepatitis'},
-  {label: 'Radiation Treatment', value: 'Radiation Treatment'},
-  {label: 'Ulcer', value: 'Ulcer'},
-  {label: 'BP High/Low', value: 'BP High/Low'},
-  {label: 'Herpes', value: 'Herpes'},
-  {label: 'Respiratory Disease', value: 'Respiratory Disease'},
-  {label: 'Venereal Disease', value: 'Venereal Disease'},
-  {label: 'Heart Problems', value: 'Heart Problems'},
-  {label: 'Jaundice', value: 'Jaundice'},
-  {label: 'Corticosteriod Treatment', value: 'Corticosteriod Treatment'},
+  { label: 'AIDS', value: 'AIDS' },
+  { label: 'Cancer', value: 'Cancer' },
+  { label: 'Liver Disease', value: 'Liver Disease' },
+  { label: 'TB', value: 'TB' },
+  { label: 'Asthma', value: 'Asthma' },
+  { label: 'Diabetes', value: 'Diabetes' },
+  { label: 'Kidney Disease', value: 'Kidney Disease' },
+  { label: 'Rheumatic Fever', value: 'Rheumatic Fever' },
+  { label: 'Arthritis', value: 'Arthritis' },
+  { label: 'Epilepsy', value: 'Epilepsy' },
+  { label: 'Psychiatric Treatment', value: 'Psychiatric Treatment' },
+  { label: 'Thyroid Problems', value: 'Thyroid Problems' },
+  { label: 'Blood Disease', value: 'Blood Disease' },
+  { label: 'Hepatitis', value: 'Hepatitis' },
+  { label: 'Radiation Treatment', value: 'Radiation Treatment' },
+  { label: 'Ulcer', value: 'Ulcer' },
+  { label: 'BP High/Low', value: 'BP High/Low' },
+  { label: 'Herpes', value: 'Herpes' },
+  { label: 'Respiratory Disease', value: 'Respiratory Disease' },
+  { label: 'Venereal Disease', value: 'Venereal Disease' },
+  { label: 'Heart Problems', value: 'Heart Problems' },
+  { label: 'Jaundice', value: 'Jaundice' },
+  { label: 'Corticosteriod Treatment', value: 'Corticosteriod Treatment' },
 ];
 
 interface PatientInformationProps extends FormComponentProps {
@@ -122,14 +122,14 @@ class PatientInformation extends Component<PatientInformationProps> {
   };
 
   componentDidMount() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch({
       type: 'patientsInfo/fetchPatient',
       payload: {
         patient_id: 1,
       },
     });
-    window.addEventListener('resize', this.resizeFooterToolbar, {passive: true});
+    window.addEventListener('resize', this.resizeFooterToolbar, { passive: true });
   }
 
   componentWillUnmount() {
@@ -138,7 +138,7 @@ class PatientInformation extends Component<PatientInformationProps> {
 
   getErrorInfo = () => {
     const {
-      form: {getFieldsError},
+      form: { getFieldsError },
     } = this.props;
     const errors = getFieldsError();
     const errorCount = Object.keys(errors).filter(key => errors[key]).length;
@@ -190,9 +190,9 @@ class PatientInformation extends Component<PatientInformationProps> {
       const sider = document.querySelectorAll('.ant-layout-sider')[0] as HTMLDivElement;
       if (sider) {
         const width = `calc(100% - ${sider.style.width})`;
-        const {width: stateWidth} = this.state;
+        const { width: stateWidth } = this.state;
         if (stateWidth !== width) {
-          this.setState({width});
+          this.setState({ width });
         }
       }
     });
@@ -220,7 +220,7 @@ class PatientInformation extends Component<PatientInformationProps> {
 
   handlePregnancyDueDateChange = (value: any, event: any) => {
     if (value === 'yes') {
-      this.props.form.set
+      // this.props.form.set
       this.setState(
         {
           disabledPregnancyDueDate: false,
@@ -238,7 +238,7 @@ class PatientInformation extends Component<PatientInformationProps> {
 
   validate = () => {
     const {
-      form: {validateFieldsAndScroll},
+      form: { validateFieldsAndScroll },
       dispatch,
     } = this.props;
     validateFieldsAndScroll((error, values) => {
@@ -255,10 +255,10 @@ class PatientInformation extends Component<PatientInformationProps> {
   render() {
     const {
       patientsInformation,
-      form: {getFieldDecorator},
+      form: { getFieldDecorator },
       submitting,
     } = this.props;
-    const {width} = this.state;
+    const { width } = this.state;
     return (
       <>
         <PageHeaderWrapper content="Enter the valid information about the patients.">
@@ -268,30 +268,30 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={6} md={12} sm={24}>
                   <Form.Item label={fieldLabels.firstName}>
                     {getFieldDecorator('firstName', {
-                      rules: [{required: true, message: 'Please enter first name'}],
+                      rules: [{ required: true, message: 'Please enter first name' }],
                       initialValue: patientsInformation.first_name,
                     })(<Input placeholder="Please enter first name"/>)}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 6, offset: 2}} lg={{span: 8}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.lastName}>
                     {getFieldDecorator('lastName', {
-                      rules: [{required: true, message: 'Please enter last name'}],
+                      rules: [{ required: true, message: 'Please enter last name' }],
                       initialValue: patientsInformation.last_name,
                     })(<Input placeholder="Please enter last name"/>)}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 8, offset: 2}} lg={{span: 10}} md={{span: 24}} sm={24}>
+                <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
                   <Form.Item label={fieldLabels.date}>
                     {getFieldDecorator('date', {
-                      rules: [{required: true, message: 'Please select date'}],
+                      rules: [{ required: true, message: 'Please select date' }],
                       initialValue: moment(patientsInformation.birth_date),
                     })(
                       <DatePicker
                         showToday
                         mode="date"
                         format="DD-MM-YYYY"
-                        style={{width: '100%'}}
+                        style={{ width: '100%' }}
                       />,
                     )}
                   </Form.Item>
@@ -301,7 +301,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.address}>
                     {getFieldDecorator('address', {
-                      rules: [{required: true, message: 'Please enter the address'}],
+                      rules: [{ required: true, message: 'Please enter the address' }],
                       initialValue: patientsInformation.current_address,
                     })(
                       <TextArea
@@ -315,23 +315,23 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={6} md={12} sm={24}>
                   <Form.Item label={fieldLabels.profession}>
                     {getFieldDecorator('profession', {
-                      rules: [{required: true, message: 'Please enter profession'}],
+                      rules: [{ required: true, message: 'Please enter profession' }],
                       initialValue: patientsInformation.profession,
                     })(<Input placeholder="Please enter profession"/>)}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 6, offset: 2}} lg={{span: 8}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.telephoneNumber}>
                     {getFieldDecorator('telephoneNumber', {
-                      rules: [{required: true, message: 'Please enter telephone no.'}],
+                      rules: [{ required: true, message: 'Please enter telephone no.' }],
                       initialValue: patientsInformation.telephone_no,
                     })(<Input placeholder="Please enter teletphone no."/>)}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 8, offset: 2}} lg={{span: 10}} md={{span: 24}} sm={24}>
+                <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
                   <Form.Item label={fieldLabels.mobileNumber}>
                     {getFieldDecorator('mobileNumber', {
-                      rules: [{required: true, message: 'Please enter mobile no.'}],
+                      rules: [{ required: true, message: 'Please enter mobile no.' }],
                       initialValue: patientsInformation.mobile_no,
                     })(
                       <Input
@@ -346,7 +346,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={6} md={12} sm={24}>
                   <Form.Item label={fieldLabels.sex}>
                     {getFieldDecorator('sex', {
-                      rules: [{required: true, message: 'Please select gender'}],
+                      rules: [{ required: true, message: 'Please select gender' }],
                       initialValue: patientsInformation.sex,
                     })(
                       <Select placeholder="Please select gender">
@@ -356,10 +356,10 @@ class PatientInformation extends Component<PatientInformationProps> {
                     )}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 4, offset: 1}} lg={{span: 8}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 4, offset: 1 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.age}>
                     {getFieldDecorator('age', {
-                      rules: [{required: true, message: 'Please enter age'}],
+                      rules: [{ required: true, message: 'Please enter age' }],
                       initialValue: patientsInformation.age,
                     })(
                       <Input
@@ -368,10 +368,10 @@ class PatientInformation extends Component<PatientInformationProps> {
                     )}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 4, offset: 1}} lg={{span: 8}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 4, offset: 1 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.maritalStatus}>
                     {getFieldDecorator('maritalStatus', {
-                      rules: [{required: true, message: 'Please select Marital Status'}],
+                      rules: [{ required: true, message: 'Please select Marital Status' }],
                       initialValue: patientsInformation.marital_status ? 'yes' : 'no',
                     })(
                       <Select placeholder="Please select Marital Status">
@@ -381,17 +381,17 @@ class PatientInformation extends Component<PatientInformationProps> {
                     )}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 6, offset: 2}} lg={{span: 10}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 10 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.dateOfBirth}>
                     {getFieldDecorator('dateOfBirth', {
-                      rules: [{required: true, message: 'Please select date of birth'}],
+                      rules: [{ required: true, message: 'Please select date of birth' }],
                       initialValue: moment(patientsInformation.birth_date),
                     })(
                       <DatePicker
                         showToday
                         mode="date"
                         format="DD-MM-YYYY"
-                        style={{width: '100%'}}
+                        style={{ width: '100%' }}
                       />,
                     )}
                   </Form.Item>
@@ -671,7 +671,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={6} md={12} sm={24}>
                   <Form.Item label={fieldLabels.isNursing}>
                     {getFieldDecorator('isNursing', {
-                      rules: [{required: true, message: 'Are you Nursing'}],
+                      rules: [{ required: true, message: 'Are you Nursing' }],
                       initialValue: patientsInformation.is_nursing ? 'yes' : 'no',
                     })(
                       <Select placeholder="Are you Nursing">
@@ -681,10 +681,10 @@ class PatientInformation extends Component<PatientInformationProps> {
                     )}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 6, offset: 2}} lg={{span: 8}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.isPregnant}>
                     {getFieldDecorator('isPregnant', {
-                      rules: [{required: true, message: 'Are you pregnant'}],
+                      rules: [{ required: true, message: 'Are you pregnant' }],
                       initialValue: patientsInformation.is_pregnant ? 'yes' : 'no',
                     })(
                       <Select placeholder="Are you pregnant"
@@ -695,10 +695,10 @@ class PatientInformation extends Component<PatientInformationProps> {
                     )}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 6, offset: 2}} lg={{span: 10}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 10 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.pregnancyDueDate}>
                     {getFieldDecorator('pregnancyDueDate', {
-                      rules: [{required: true, message: 'Please select due date'}],
+                      rules: [{ required: true, message: 'Please select due date' }],
                       initialValue: moment(patientsInformation.pregnancy_due_date),
                     })(
                       <DatePicker
@@ -706,7 +706,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                         showToday
                         mode="date"
                         format="DD-MM-YYYY"
-                        style={{width: '100%'}}
+                        style={{ width: '100%' }}
                       />,
                     )}
                   </Form.Item>
@@ -716,7 +716,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={6} md={12} sm={24}>
                   <Form.Item label={fieldLabels.isChewing}>
                     {getFieldDecorator('isChewing', {
-                      rules: [{required: true, message: 'Are you chewing paan'}],
+                      rules: [{ required: true, message: 'Are you chewing paan' }],
                       initialValue: patientsInformation.is_chewing ? 'yes' : 'no',
                     })(
                       <Select placeholder="Are you chewing paan">
@@ -726,10 +726,10 @@ class PatientInformation extends Component<PatientInformationProps> {
                     )}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 6, offset: 2}} lg={{span: 8}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.isSmoking}>
                     {getFieldDecorator('isSmoking', {
-                      rules: [{required: true, message: 'Are you smoking'}],
+                      rules: [{ required: true, message: 'Are you smoking' }],
                       initialValue: patientsInformation.is_smoking ? 'yes' : 'no',
                     })(
                       <Select placeholder="Are you smoking"
@@ -740,10 +740,10 @@ class PatientInformation extends Component<PatientInformationProps> {
                     )}
                   </Form.Item>
                 </Col>
-                <Col xl={{span: 6, offset: 2}} lg={{span: 10}} md={{span: 12}} sm={24}>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 10 }} md={{ span: 12 }} sm={24}>
                   <Form.Item label={fieldLabels.cigaretteCount}>
                     {getFieldDecorator('cigaretteCount', {
-                      rules: [{required: true, message: 'Please enter cigarette count'}],
+                      rules: [{ required: true, message: 'Please enter cigarette count' }],
                       initialValue: patientsInformation.cigarette_count,
                     })(
                       <Input
@@ -762,7 +762,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.listOfMedicine}>
                     {getFieldDecorator('listOfMedicine', {
-                      rules: [{required: true, message: 'List the Medicines you are taking currently'}],
+                      rules: [{ required: true, message: 'List the Medicines you are taking currently' }],
                       initialValue: patientsInformation.medicine_list,
                     })(
                       <TextArea
@@ -772,24 +772,90 @@ class PatientInformation extends Component<PatientInformationProps> {
                   </Form.Item>
                 </Col>
               </Row>
-              <Row>
-                {/*<Form.Item label={fieldLabels.isAllergic}>*/}
-                {/*  {getFieldDecorator('isAllergic', {*/}
-                {/*    rules: [{ required: true, message: 'Please select allergic medicines' }],*/}
-                {/*    initialValue: patientsInformation.is_allergic_aspirin,*/}
-                {/*  })(*/}
-                {/*    <Checkbox.Group*/}
-                {/*      options={allergicMedicines}*/}
-                {/*      onChange={this.onChangeCheckBox}*/}
-                {/*    />,*/}
-                {/*  )}*/}
-                {/*</Form.Item>*/}
+              <Row gutter={16}>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item>
+                    {getFieldDecorator('is_allergic_penicillin', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: patientsInformation.is_allergic_penicillin || '',
+                      valuePropName: 'checked',
+                    })(
+                      <Checkbox>Penicillin</Checkbox>,
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item>
+                    {getFieldDecorator('is_allergic_sulfa', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: patientsInformation.is_allergic_sulfa || '',
+                      valuePropName: 'checked',
+                    })(
+                      <Checkbox>Sulfa</Checkbox>,
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item>
+                    {getFieldDecorator('is_allergic_aspirin', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: patientsInformation.is_allergic_aspirin || '',
+                      valuePropName: 'checked',
+                    })(
+                      <Checkbox>Aspirin</Checkbox>,
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item>
+                    {getFieldDecorator('is_allergic_iodine', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: patientsInformation.is_allergic_iodine || '',
+                      valuePropName: 'checked',
+                    })(
+                      <Checkbox>Iodine</Checkbox>,
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item>
+                    {getFieldDecorator('is_allergic_localanaes', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: patientsInformation.is_allergic_localanaes || '',
+                      valuePropName: 'checked',
+                    })(
+                      <Checkbox>Local Anaesthetic</Checkbox>,
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item>
+                    {getFieldDecorator('is_allergic_ibuprofen', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: patientsInformation.is_allergic_ibuprofen || '',
+                      valuePropName: 'checked',
+                    })(
+                      <Checkbox>Ibuprofen</Checkbox>,
+                    )}
+                  </Form.Item>
+                </Col>
+                {/* <Form.Item label={fieldLabels.isAllergic}> */}
+                {/*  {getFieldDecorator('isAllergic', { */}
+                {/*    rules: [{ required: true, message: 'Please select allergic medicines' }], */}
+                {/*    initialValue: patientsInformation.is_allergic_aspirin, */}
+                {/*  })( */}
+                {/*    <Checkbox.Group */}
+                {/*      options={allergicMedicines} */}
+                {/*      onChange={this.onChangeCheckBox} */}
+                {/*    />, */}
+                {/*  )} */}
+                {/* </Form.Item> */}
               </Row>
               <Row gutter={16}>
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.anyOther}>
                     {getFieldDecorator('anyOther', {
-                      rules: [{required: true, message: 'Any Other'}],
+                      rules: [{ required: true, message: 'Any Other' }],
                       initialValue: patientsInformation.any_other,
                     })(
                       <TextArea
@@ -807,7 +873,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.chiefCompliant}>
                     {getFieldDecorator('chiefCompliant', {
-                      rules: [{required: true, message: 'Chief Compliant'}],
+                      rules: [{ required: true, message: 'Chief Compliant' }],
                       initialValue: patientsInformation.chief_compliant,
                     })(
                       <TextArea
@@ -821,7 +887,7 @@ class PatientInformation extends Component<PatientInformationProps> {
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.pastDentalHistory}>
                     {getFieldDecorator('pastDentalHistory', {
-                      rules: [{required: true, message: 'Past Dental History'}],
+                      rules: [{ required: true, message: 'Past Dental History' }],
                       initialValue: patientsInformation.past_dental_history,
                     })(
                       <TextArea
@@ -834,7 +900,7 @@ class PatientInformation extends Component<PatientInformationProps> {
             </Form>
           </Card>
         </PageHeaderWrapper>
-        <FooterToolbar style={{width}}>
+        <FooterToolbar style={{ width }}>
           {this.getErrorInfo()}
           <Button type="primary" onClick={this.validate} loading={submitting}>
             submit
