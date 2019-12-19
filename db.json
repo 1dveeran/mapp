@@ -1,0 +1,817 @@
+{
+  "data_table": {
+    "list": [
+      {
+        "name": "Roy Agasthyan",
+        "age": 26
+      },
+      {
+        "name": "Sam Thomason",
+        "age": 22
+      },
+      {
+        "name": "Michael Jackson",
+        "age": 36
+      },
+      {
+        "name": "Samuel Roy",
+        "age": 56
+      },
+      {
+        "name": "Rima Soy",
+        "age": 28
+      },
+      {
+        "name": "Suzi Eliamma",
+        "age": 28
+      }
+    ]
+  },
+  "fake_chart_data": {
+    "visitData": [
+      {
+        "x": "2019-09-19",
+        "y": 7
+      },
+      {
+        "x": "2019-09-20",
+        "y": 5
+      },
+      {
+        "x": "2019-09-21",
+        "y": 4
+      },
+      {
+        "x": "2019-09-22",
+        "y": 2
+      },
+      {
+        "x": "2019-09-23",
+        "y": 4
+      },
+      {
+        "x": "2019-09-24",
+        "y": 7
+      },
+      {
+        "x": "2019-09-25",
+        "y": 5
+      },
+      {
+        "x": "2019-09-26",
+        "y": 6
+      },
+      {
+        "x": "2019-09-27",
+        "y": 5
+      },
+      {
+        "x": "2019-09-28",
+        "y": 9
+      },
+      {
+        "x": "2019-09-29",
+        "y": 6
+      },
+      {
+        "x": "2019-09-30",
+        "y": 3
+      },
+      {
+        "x": "2019-10-01",
+        "y": 1
+      },
+      {
+        "x": "2019-10-02",
+        "y": 5
+      },
+      {
+        "x": "2019-10-03",
+        "y": 3
+      },
+      {
+        "x": "2019-10-04",
+        "y": 6
+      },
+      {
+        "x": "2019-10-05",
+        "y": 5
+      }
+    ],
+    "visitData2": [
+      {
+        "x": "2019-09-19",
+        "y": 1
+      },
+      {
+        "x": "2019-09-20",
+        "y": 6
+      },
+      {
+        "x": "2019-09-21",
+        "y": 4
+      },
+      {
+        "x": "2019-09-22",
+        "y": 8
+      },
+      {
+        "x": "2019-09-23",
+        "y": 3
+      },
+      {
+        "x": "2019-09-24",
+        "y": 7
+      },
+      {
+        "x": "2019-09-25",
+        "y": 2
+      }
+    ],
+    "salesData": [
+      {
+        "x": "1month",
+        "y": 366
+      },
+      {
+        "x": "2month",
+        "y": 1066
+      },
+      {
+        "x": "3month",
+        "y": 791
+      },
+      {
+        "x": "4month",
+        "y": 1043
+      },
+      {
+        "x": "5month",
+        "y": 1139
+      },
+      {
+        "x": "6month",
+        "y": 277
+      },
+      {
+        "x": "7month",
+        "y": 553
+      },
+      {
+        "x": "8month",
+        "y": 700
+      },
+      {
+        "x": "9month",
+        "y": 1032
+      },
+      {
+        "x": "10month",
+        "y": 997
+      },
+      {
+        "x": "11month",
+        "y": 953
+      },
+      {
+        "x": "12month",
+        "y": 313
+      }
+    ],
+    "searchData": [
+      {
+        "index": 1,
+        "keyword": "search keyword-0",
+        "count": 968,
+        "range": 27,
+        "status": 1
+      },
+      {
+        "index": 2,
+        "keyword": "搜索关键词-1",
+        "count": 114,
+        "range": 10,
+        "status": 1
+      },
+      {
+        "index": 3,
+        "keyword": "搜索关键词-2",
+        "count": 802,
+        "range": 31,
+        "status": 1
+      },
+      {
+        "index": 4,
+        "keyword": "搜索关键词-3",
+        "count": 331,
+        "range": 71,
+        "status": 0
+      },
+      {
+        "index": 5,
+        "keyword": "搜索关键词-4",
+        "count": 650,
+        "range": 58,
+        "status": 1
+      },
+      {
+        "index": 6,
+        "keyword": "搜索关键词-5",
+        "count": 195,
+        "range": 94,
+        "status": 1
+      },
+      {
+        "index": 7,
+        "keyword": "搜索关键词-6",
+        "count": 833,
+        "range": 68,
+        "status": 1
+      },
+      {
+        "index": 8,
+        "keyword": "搜索关键词-7",
+        "count": 995,
+        "range": 60,
+        "status": 1
+      },
+      {
+        "index": 9,
+        "keyword": "搜索关键词-8",
+        "count": 451,
+        "range": 51,
+        "status": 1
+      },
+      {
+        "index": 10,
+        "keyword": "搜索关键词-9",
+        "count": 266,
+        "range": 15,
+        "status": 1
+      },
+      {
+        "index": 11,
+        "keyword": "搜索关键词-10",
+        "count": 114,
+        "range": 7,
+        "status": 0
+      },
+      {
+        "index": 12,
+        "keyword": "搜索关键词-11",
+        "count": 678,
+        "range": 68,
+        "status": 0
+      },
+      {
+        "index": 13,
+        "keyword": "搜索关键词-12",
+        "count": 625,
+        "range": 64,
+        "status": 1
+      },
+      {
+        "index": 14,
+        "keyword": "搜索关键词-13",
+        "count": 269,
+        "range": 1,
+        "status": 1
+      },
+      {
+        "index": 15,
+        "keyword": "搜索关键词-14",
+        "count": 579,
+        "range": 65,
+        "status": 1
+      },
+      {
+        "index": 16,
+        "keyword": "搜索关键词-15",
+        "count": 99,
+        "range": 49,
+        "status": 0
+      },
+      {
+        "index": 17,
+        "keyword": "搜索关键词-16",
+        "count": 227,
+        "range": 30,
+        "status": 0
+      },
+      {
+        "index": 18,
+        "keyword": "搜索关键词-17",
+        "count": 611,
+        "range": 72,
+        "status": 0
+      },
+      {
+        "index": 19,
+        "keyword": "搜索关键词-18",
+        "count": 322,
+        "range": 99,
+        "status": 0
+      },
+      {
+        "index": 20,
+        "keyword": "搜索关键词-19",
+        "count": 3,
+        "range": 71,
+        "status": 1
+      },
+      {
+        "index": 21,
+        "keyword": "搜索关键词-20",
+        "count": 141,
+        "range": 6,
+        "status": 1
+      },
+      {
+        "index": 22,
+        "keyword": "搜索关键词-21",
+        "count": 341,
+        "range": 37,
+        "status": 0
+      },
+      {
+        "index": 23,
+        "keyword": "搜索关键词-22",
+        "count": 729,
+        "range": 43,
+        "status": 1
+      },
+      {
+        "index": 24,
+        "keyword": "搜索关键词-23",
+        "count": 218,
+        "range": 38,
+        "status": 0
+      },
+      {
+        "index": 25,
+        "keyword": "搜索关键词-24",
+        "count": 975,
+        "range": 16,
+        "status": 0
+      },
+      {
+        "index": 26,
+        "keyword": "搜索关键词-25",
+        "count": 411,
+        "range": 2,
+        "status": 0
+      },
+      {
+        "index": 27,
+        "keyword": "搜索关键词-26",
+        "count": 737,
+        "range": 87,
+        "status": 1
+      },
+      {
+        "index": 28,
+        "keyword": "搜索关键词-27",
+        "count": 946,
+        "range": 83,
+        "status": 0
+      },
+      {
+        "index": 29,
+        "keyword": "搜索关键词-28",
+        "count": 733,
+        "range": 22,
+        "status": 1
+      },
+      {
+        "index": 30,
+        "keyword": "搜索关键词-29",
+        "count": 945,
+        "range": 71,
+        "status": 1
+      },
+      {
+        "index": 31,
+        "keyword": "搜索关键词-30",
+        "count": 332,
+        "range": 82,
+        "status": 0
+      },
+      {
+        "index": 32,
+        "keyword": "搜索关键词-31",
+        "count": 403,
+        "range": 5,
+        "status": 0
+      },
+      {
+        "index": 33,
+        "keyword": "搜索关键词-32",
+        "count": 774,
+        "range": 89,
+        "status": 1
+      },
+      {
+        "index": 34,
+        "keyword": "搜索关键词-33",
+        "count": 39,
+        "range": 78,
+        "status": 1
+      },
+      {
+        "index": 35,
+        "keyword": "搜索关键词-34",
+        "count": 868,
+        "range": 86,
+        "status": 1
+      },
+      {
+        "index": 36,
+        "keyword": "搜索关键词-35",
+        "count": 760,
+        "range": 8,
+        "status": 0
+      },
+      {
+        "index": 37,
+        "keyword": "搜索关键词-36",
+        "count": 716,
+        "range": 91,
+        "status": 0
+      },
+      {
+        "index": 38,
+        "keyword": "搜索关键词-37",
+        "count": 739,
+        "range": 6,
+        "status": 1
+      },
+      {
+        "index": 39,
+        "keyword": "搜索关键词-38",
+        "count": 277,
+        "range": 84,
+        "status": 0
+      },
+      {
+        "index": 40,
+        "keyword": "搜索关键词-39",
+        "count": 105,
+        "range": 72,
+        "status": 1
+      },
+      {
+        "index": 41,
+        "keyword": "搜索关键词-40",
+        "count": 647,
+        "range": 4,
+        "status": 1
+      },
+      {
+        "index": 42,
+        "keyword": "搜索关键词-41",
+        "count": 224,
+        "range": 12,
+        "status": 1
+      },
+      {
+        "index": 43,
+        "keyword": "搜索关键词-42",
+        "count": 975,
+        "range": 88,
+        "status": 0
+      },
+      {
+        "index": 44,
+        "keyword": "搜索关键词-43",
+        "count": 668,
+        "range": 90,
+        "status": 1
+      },
+      {
+        "index": 45,
+        "keyword": "搜索关键词-44",
+        "count": 811,
+        "range": 93,
+        "status": 1
+      },
+      {
+        "index": 46,
+        "keyword": "搜索关键词-45",
+        "count": 920,
+        "range": 18,
+        "status": 0
+      },
+      {
+        "index": 47,
+        "keyword": "搜索关键词-46",
+        "count": 387,
+        "range": 91,
+        "status": 0
+      },
+      {
+        "index": 48,
+        "keyword": "搜索关键词-47",
+        "count": 161,
+        "range": 29,
+        "status": 1
+      },
+      {
+        "index": 49,
+        "keyword": "搜索关键词-48",
+        "count": 202,
+        "range": 78,
+        "status": 0
+      },
+      {
+        "index": 50,
+        "keyword": "搜索关键词-49",
+        "count": 320,
+        "range": 64,
+        "status": 0
+      }
+    ],
+    "offlineData": [
+      {
+        "name": "Stores 0",
+        "cvr": 0.7
+      },
+      {
+        "name": "Stores 1",
+        "cvr": 0.7
+      },
+      {
+        "name": "Stores 2",
+        "cvr": 0.3
+      },
+      {
+        "name": "Stores 3",
+        "cvr": 0.3
+      },
+      {
+        "name": "Stores 4",
+        "cvr": 0.4
+      },
+      {
+        "name": "Stores 5",
+        "cvr": 0.6
+      },
+      {
+        "name": "Stores 6",
+        "cvr": 0.3
+      },
+      {
+        "name": "Stores 7",
+        "cvr": 0.3
+      },
+      {
+        "name": "Stores 8",
+        "cvr": 0.8
+      },
+      {
+        "name": "Stores 9",
+        "cvr": 0.8
+      }
+    ],
+    "offlineChartData": [
+      {
+        "x": 1568870965828,
+        "y1": 55,
+        "y2": 67
+      },
+      {
+        "x": 1568872765828,
+        "y1": 92,
+        "y2": 25
+      },
+      {
+        "x": 1568874565828,
+        "y1": 58,
+        "y2": 72
+      },
+      {
+        "x": 1568876365828,
+        "y1": 75,
+        "y2": 93
+      },
+      {
+        "x": 1568878165828,
+        "y1": 12,
+        "y2": 15
+      },
+      {
+        "x": 1568879965828,
+        "y1": 80,
+        "y2": 47
+      },
+      {
+        "x": 1568881765828,
+        "y1": 87,
+        "y2": 27
+      },
+      {
+        "x": 1568883565828,
+        "y1": 52,
+        "y2": 86
+      },
+      {
+        "x": 1568885365828,
+        "y1": 32,
+        "y2": 32
+      },
+      {
+        "x": 1568887165828,
+        "y1": 67,
+        "y2": 79
+      },
+      {
+        "x": 1568888965828,
+        "y1": 102,
+        "y2": 41
+      },
+      {
+        "x": 1568890765828,
+        "y1": 70,
+        "y2": 100
+      },
+      {
+        "x": 1568892565828,
+        "y1": 16,
+        "y2": 66
+      },
+      {
+        "x": 1568894365828,
+        "y1": 99,
+        "y2": 32
+      },
+      {
+        "x": 1568896165828,
+        "y1": 91,
+        "y2": 64
+      },
+      {
+        "x": 1568897965828,
+        "y1": 60,
+        "y2": 14
+      },
+      {
+        "x": 1568899765828,
+        "y1": 33,
+        "y2": 13
+      },
+      {
+        "x": 1568901565828,
+        "y1": 58,
+        "y2": 58
+      },
+      {
+        "x": 1568903365828,
+        "y1": 91,
+        "y2": 54
+      },
+      {
+        "x": 1568905165828,
+        "y1": 67,
+        "y2": 80
+      }
+    ],
+    "salesTypeData": [
+      {
+        "x": "Active",
+        "y": 152
+      },
+      {
+        "x": "Hibernate",
+        "y": 266
+      },
+      {
+        "x": "InActive",
+        "y": 514
+      }
+    ],
+    "salesTypeDataOnline": [
+      {
+        "x": "HR",
+        "y": 10
+      },
+      {
+        "x": "Accounts",
+        "y": 13
+      },
+      {
+        "x": "Stores",
+        "y": 11
+      },
+      {
+        "x": "Security",
+        "y": 4
+      },
+      {
+        "x": "Administration",
+        "y": 14
+      },
+      {
+        "x": "Marketing",
+        "y": 11
+      }
+    ],
+    "salesTypeDataOffline": [
+      {
+        "x": "Development",
+        "y": 76
+      },
+      {
+        "x": "Testing",
+        "y": 64
+      },
+      {
+        "x": "Implementation",
+        "y": 34
+      },
+      {
+        "x": "Network Support",
+        "y": 14
+      },
+      {
+        "x": "System Support",
+        "y": 26
+      }
+    ],
+    "radarData": [
+      {
+        "name": "个人",
+        "label": "引用",
+        "value": 10
+      },
+      {
+        "name": "个人",
+        "label": "口碑",
+        "value": 8
+      },
+      {
+        "name": "个人",
+        "label": "产量",
+        "value": 4
+      },
+      {
+        "name": "个人",
+        "label": "贡献",
+        "value": 5
+      },
+      {
+        "name": "个人",
+        "label": "热度",
+        "value": 7
+      },
+      {
+        "name": "团队",
+        "label": "引用",
+        "value": 3
+      },
+      {
+        "name": "团队",
+        "label": "口碑",
+        "value": 9
+      },
+      {
+        "name": "团队",
+        "label": "产量",
+        "value": 6
+      },
+      {
+        "name": "团队",
+        "label": "贡献",
+        "value": 3
+      },
+      {
+        "name": "团队",
+        "label": "热度",
+        "value": 1
+      },
+      {
+        "name": "部门",
+        "label": "引用",
+        "value": 4
+      },
+      {
+        "name": "部门",
+        "label": "口碑",
+        "value": 1
+      },
+      {
+        "name": "部门",
+        "label": "产量",
+        "value": 6
+      },
+      {
+        "name": "部门",
+        "label": "贡献",
+        "value": 5
+      },
+      {
+        "name": "部门",
+        "label": "热度",
+        "value": 7
+      }
+    ]
+  }
+}
