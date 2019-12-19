@@ -1,8 +1,8 @@
-import {AnyAction, Reducer} from 'redux';
-import {EffectsCommandMap} from 'dva';
-import {message} from 'antd';
-import {fakeSubmitForm, queryPatient, queryRule} from './service';
-import {IPatientsInformation} from '@/pages/patients/edit-patients/data';
+import { AnyAction, Reducer } from 'redux';
+import { EffectsCommandMap } from 'dva';
+import { message } from 'antd';
+import { updatePatientsInfo, queryPatient, queryRule } from './service';
+import { IPatientsInformation } from '@/pages/patients/edit-patients/data';
 
 export interface ModalState {
   patientsInformation?: Partial<IPatientsInformation>;
@@ -36,7 +36,7 @@ const Model: ModelType = {
   },
 
   effects: {
-    * fetch(_, {call, put}) {
+    * fetch(_, { call, put }) {
       const response = yield call(queryRule);
       yield put({
         type: 'save',
@@ -44,7 +44,7 @@ const Model: ModelType = {
       });
       console.log('Download Log: ', response);
     },
-    * fetchPatient({payload}, {call, put}) {
+    * fetchPatient({ payload }, { call, put }) {
       const response = yield call(queryPatient, payload);
       yield put({
         type: 'savePatientsInfo',
@@ -52,9 +52,9 @@ const Model: ModelType = {
       });
       console.log('Download Log: ', response);
     },
-    * submitPatientsInfo({payload}, {call}) {
-      yield call(fakeSubmitForm, payload);
-      message.success('Submitted successfully');
+    * submitPatientsInfo({ payload }, { call }) {
+      yield call(updatePatientsInfo, payload);
+      message.success('Updated successfully');
     },
   },
   reducers: {

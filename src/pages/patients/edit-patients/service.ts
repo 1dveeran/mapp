@@ -16,3 +16,10 @@ export async function queryPatient(params: { patient_id: number }) {
     params,
   });
 }
+
+export async function updatePatientsInfo(params: any) {
+  return request('http://127.0.0.1:7000/api/update-patient', {
+    method: 'POST',
+    data: params,
+  });
+}
