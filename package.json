@@ -25,20 +25,6 @@
     "test:all": "node ./tests/run-tests.js",
     "test:component": "umi test ./src/components"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.less": "stylelint --syntax less",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "**/*.{js,jsx}": "npm run lint-staged:js",
-    "**/*.{js,ts,tsx}": "npm run lint-staged:js"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -109,7 +95,7 @@
     "enzyme": "^3.9.0",
     "eslint": "^5.16.0",
     "gh-pages": "^2.0.1",
-    "husky": "^3.0.0",
+    "husky": "^3.1.0",
     "import-sort-cli": "^6.0.0",
     "import-sort-parser-babylon": "^6.0.0",
     "import-sort-parser-typescript": "^6.0.0",
