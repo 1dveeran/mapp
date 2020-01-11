@@ -38,6 +38,58 @@ const fieldLabels = {
   occlusal: 'Occlusal',
   bitewing: 'Bitewing',
   others: 'Others',
+  t_55: 't_55',
+t_54: 't_54',
+t_53: 't_53',
+t_52: 't_52',
+t_51: 't_51',
+t_61: 't_61',
+t_62: 't_62',
+t_63: 't_63',
+t_64: 't_64',
+t_65: 't_65',
+t_18: 't_18',
+t_17: 't_17',
+t_16: 't_16',
+t_15: 't_15',
+t_14: 't_14',
+t_13: 't_13',
+t_12: 't_12',
+t_11: 't_11',
+t_21: 't_21',
+t_22: 't_22',
+t_23: 't_23',
+t_24: 't_24',
+t_25: 't_25',
+t_26: 't_26',
+t_27: 't_27',
+t_28: 't_28',
+t_48: 't_48',
+t_47: 't_47',
+t_46: 't_46',
+t_45: 't_45',
+t_44: 't_44',
+t_43: 't_43',
+t_42: 't_42',
+t_41: 't_41',
+t_31: 't_31',
+t_32: 't_32',
+t_33: 't_33',
+t_34: 't_34',
+t_35: 't_35',
+t_36: 't_36',
+t_37: 't_37',
+t_38: 't_38',
+t_85: 't_85',
+t_84: 't_84',
+t_83: 't_83',
+t_82: 't_82',
+t_81: 't_81',
+t_71: 't_71',
+t_72: 't_72',
+t_73: 't_73',
+t_74: 't_74',
+t_75: 't_75',
 };
 
 interface DiagnosisInformationProps extends FormComponentProps {
@@ -58,7 +110,7 @@ interface DiagnosisInformationProps extends FormComponentProps {
     diagnosisInformation: diagnosisInfo.diagnosisInformation,
   }),
 )
-class AdvancedForm extends Component<DiagnosisInformationProps> {
+class DiagnosisInformation extends Component<DiagnosisInformationProps> {
   state = {
     width: '100%',
     disabledSmoking: true,
@@ -172,7 +224,7 @@ class AdvancedForm extends Component<DiagnosisInformationProps> {
       if (!error) {
         // submit the values
         dispatch({
-          type: 'formAdvancedForm/submitAdvancedForm',
+          type: 'diagnosisInfo/submitDiagnosisInfo',
           payload: values,
         });
       }
@@ -181,6 +233,7 @@ class AdvancedForm extends Component<DiagnosisInformationProps> {
 
   render() {
     const {
+      diagnosisInformation,
       form: { getFieldDecorator },
       submitting,
     } = this.props;
@@ -227,87 +280,34 @@ class AdvancedForm extends Component<DiagnosisInformationProps> {
               <Row gutter={0}>
                 <InputGroup compact>
                   <Col xl={{ span: 2, offset: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="55" />
+                    <Form.Item>{getFieldDecorator('t_55')(<Input placeholder="55" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="54" />
+                    <Form.Item>{getFieldDecorator('t_54')(<Input placeholder="54" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="52" />
+                    <Form.Item>{getFieldDecorator('t_52')(<Input placeholder="52" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="51" />
+                    <Form.Item>{getFieldDecorator('t_51')(<Input placeholder="51" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="61" />
+                    <Form.Item>{getFieldDecorator('t_61')(<Input placeholder="61" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="53" />
+                    <Form.Item>{getFieldDecorator('t_53')(<Input placeholder="53" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="62" />
+                    <Form.Item>{getFieldDecorator('t_62')(<Input placeholder="62" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="63" />
+                    <Form.Item>{getFieldDecorator('t_63')(<Input placeholder="63" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="64" />
+                    <Form.Item>{getFieldDecorator('t_64')(<Input placeholder="64" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="65" />
-                  </Col>
-                </InputGroup>
-              </Row>
-
-              <Row gutter={0}>
-                <InputGroup compact>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="18" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="17" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="16" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="15" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="14" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="13" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="12" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="11" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="21" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="22" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="23" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="24" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="25" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="26" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="27" />
-                  </Col>
-                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="28" />
+                    <Form.Item>{getFieldDecorator('t_65')(<Input placeholder="65" />)}</Form.Item>
                   </Col>
                 </InputGroup>
               </Row>
@@ -315,52 +315,105 @@ class AdvancedForm extends Component<DiagnosisInformationProps> {
               <Row gutter={0}>
                 <InputGroup compact>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="48" />
+                    <Form.Item>{getFieldDecorator('t_18')(<Input placeholder="18" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="47" />
+                    <Form.Item>{getFieldDecorator('t_17')(<Input placeholder="17" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="46" />
+                    <Form.Item>{getFieldDecorator('t_16')(<Input placeholder="16" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="45" />
+                    <Form.Item>{getFieldDecorator('t_15')(<Input placeholder="15" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="44" />
+                    <Form.Item>{getFieldDecorator('t_14')(<Input placeholder="14" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="43" />
+                    <Form.Item>{getFieldDecorator('t_13')(<Input placeholder="13" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="42" />
+                    <Form.Item>{getFieldDecorator('t_12')(<Input placeholder="12" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="41" />
+                    <Form.Item>{getFieldDecorator('t_11')(<Input placeholder="11" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="31" />
+                    <Form.Item>{getFieldDecorator('t_21')(<Input placeholder="21" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="32" />
+                    <Form.Item>{getFieldDecorator('t_22')(<Input placeholder="22" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="33" />
+                    <Form.Item>{getFieldDecorator('t_23')(<Input placeholder="23" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="34" />
+                    <Form.Item>{getFieldDecorator('t_24')(<Input placeholder="24" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="35" />
+                    <Form.Item>{getFieldDecorator('t_25')(<Input placeholder="25" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="36" />
+                    <Form.Item>{getFieldDecorator('t_26')(<Input placeholder="26" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="37" />
+                    <Form.Item>{getFieldDecorator('t_27')(<Input placeholder="27" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="38" />
+                    <Form.Item>{getFieldDecorator('t_28')(<Input placeholder="28" />)}</Form.Item>
+                  </Col>
+                </InputGroup>
+              </Row>
+
+              <Row gutter={0}>
+                <InputGroup compact>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_48')(<Input placeholder="48" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_47')(<Input placeholder="47" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_46')(<Input placeholder="46" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_45')(<Input placeholder="45" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_44')(<Input placeholder="44" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_43')(<Input placeholder="43" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_42')(<Input placeholder="42" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_41')(<Input placeholder="41" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_31')(<Input placeholder="31" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_32')(<Input placeholder="32" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_33')(<Input placeholder="33" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_34')(<Input placeholder="34" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_35')(<Input placeholder="35" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_36')(<Input placeholder="36" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_37')(<Input placeholder="37" />)}</Form.Item>
+                  </Col>
+                  <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
+                    <Form.Item>{getFieldDecorator('t_38')(<Input placeholder="38" />)}</Form.Item>
                   </Col>
                 </InputGroup>
               </Row>
@@ -368,34 +421,34 @@ class AdvancedForm extends Component<DiagnosisInformationProps> {
               <Row gutter={0}>
                 <InputGroup compact>
                   <Col xl={{ span: 2, offset: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="85" />
+                    <Form.Item>{getFieldDecorator('t_85')(<Input placeholder="85" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="84" />
+                    <Form.Item>{getFieldDecorator('t_84')(<Input placeholder="84" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="83" />
+                    <Form.Item>{getFieldDecorator('t_83')(<Input placeholder="83" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="82" />
+                    <Form.Item>{getFieldDecorator('t_82')(<Input placeholder="82" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="81" />
+                    <Form.Item>{getFieldDecorator('t_81')(<Input placeholder="81" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="71" />
+                    <Form.Item>{getFieldDecorator('t_71')(<Input placeholder="71" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="72" />
+                    <Form.Item>{getFieldDecorator('t_72')(<Input placeholder="72" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="73" />
+                    <Form.Item>{getFieldDecorator('t_73')(<Input placeholder="73" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="74" />
+                    <Form.Item>{getFieldDecorator('t_74')(<Input placeholder="74" />)}</Form.Item>
                   </Col>
                   <Col xl={{ span: 2 }} lg={{ span: 4 }} md={{ span: 8 }} sm={12}>
-                    <Input placeholder="75" />
+                    <Form.Item>{getFieldDecorator('t_75')(<Input placeholder="75" />)}</Form.Item>
                   </Col>
                 </InputGroup>
               </Row>
@@ -411,11 +464,39 @@ class AdvancedForm extends Component<DiagnosisInformationProps> {
               <Row gutter={16}>
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item>
-                    {getFieldDecorator('aids', {
+                    {getFieldDecorator('is_radiograph_iopa', {
                       // rules: [{ required: true, message: 'please select disease' }],
-                      initialValue: patientsInformation.aids || '',
+                      initialValue: diagnosisInformation.is_radiograph_iopa || '',
                       valuePropName: 'checked',
-                    })(<Checkbox>AIDS</Checkbox>)}
+                    })(<Checkbox>IOPA</Checkbox>)}
+                  </Form.Item>
+                  <Form.Item>
+                    {getFieldDecorator('is_radiograph_opg', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: diagnosisInformation.is_radiograph_opg || '',
+                      valuePropName: 'checked',
+                    })(<Checkbox>OPG</Checkbox>)}
+                  </Form.Item>
+                  <Form.Item>
+                    {getFieldDecorator('is_radiograph_occlusal', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: diagnosisInformation.is_radiograph_occlusal || '',
+                      valuePropName: 'checked',
+                    })(<Checkbox>Occlusal</Checkbox>)}
+                  </Form.Item>
+                  <Form.Item>
+                    {getFieldDecorator('is_radiograph_bitewing', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: diagnosisInformation.is_radiograph_bitewing || '',
+                      valuePropName: 'checked',
+                    })(<Checkbox>Bitewing</Checkbox>)}
+                  </Form.Item>
+                  <Form.Item>
+                    {getFieldDecorator('radiograph_others', {
+                      // rules: [{ required: true, message: 'please select disease' }],
+                      initialValue: diagnosisInformation.radiograph_others || '',
+                      valuePropName: 'checked',
+                    })(<Checkbox>Others</Checkbox>)}
                   </Form.Item>
                   <Form.Item label={fieldLabels.radioGraph}>
                     <TextArea rows={3} />
@@ -451,4 +532,4 @@ class AdvancedForm extends Component<DiagnosisInformationProps> {
   }
 }
 
-export default Form.create<AdvancedFormProps>()(AdvancedForm);
+export default Form.create<DiagnosisInformationProps>()(DiagnosisInformation);

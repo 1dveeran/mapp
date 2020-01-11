@@ -54,6 +54,7 @@ const Model: ModelType = {
     },
     *submitDiagnosisInfo({ payload }, { call }) {
       yield call(updateDiagnosisInfo, payload);
+      console.log('Patients Symptoms | Response: ', payload);
       message.success('Updated successfully');
     },
   },
