@@ -181,8 +181,9 @@ class BasicList extends Component<BasicListProps,
       <div className={styles.extraContent}>
         <RadioGroup defaultValue="all">
           <RadioButton value="all">all</RadioButton>
-          <RadioButton value="progress">progress</RadioButton>
+          <RadioButton value="attended">attended</RadioButton>
           <RadioButton value="waiting">waiting</RadioButton>
+          <RadioButton value="deferred">deferred</RadioButton>
         </RadioGroup>
         <Search className={styles.extraContentSearch} placeholder="Please Enter" onSearch={() => ({})}/>
       </div>
@@ -221,13 +222,13 @@ class BasicList extends Component<BasicListProps,
       <Dropdown
         overlay={
           <Menu onClick={({key}) => editAndDelete(key, item)}>
-            <Menu.Item key="edit">编辑</Menu.Item>
-            <Menu.Item key="delete">删除</Menu.Item>
+            <Menu.Item key="edit">Edit</Menu.Item>
+            <Menu.Item key="delete">Delete</Menu.Item>
           </Menu>
         }
       >
         <a>
-          更多 <Icon type="down"/>
+          More <Icon type="down"/>
         </a>
       </Dropdown>
     );
@@ -296,13 +297,13 @@ class BasicList extends Component<BasicListProps,
             <Card bordered={false}>
               <Row>
                 <Col sm={8} xs={24}>
-                  <Info title="My To Do" value="8 missions" bordered/>
+                  <Info title="Attended" value="8 patients" bordered/>
                 </Col>
                 <Col sm={8} xs={24}>
-                  <Info title="Average task processing time this week" value="32 minutes" bordered/>
+                  <Info title="Pending" value="32 patients" bordered/>
                 </Col>
                 <Col sm={8} xs={24}>
-                  <Info title="Number of tasks completed this week" value="24 missions"/>
+                  <Info title="Deferred" value="3 patients"/>
                 </Col>
               </Row>
             </Card>
