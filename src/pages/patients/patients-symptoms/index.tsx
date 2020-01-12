@@ -3,13 +3,11 @@ import {
   Card,
   Checkbox,
   Col,
-  DatePicker,
   Form,
   Icon,
   Input,
   Popover,
   Row,
-  Select,
 } from 'antd';
 import React, { Component } from 'react';
 
@@ -233,7 +231,6 @@ class DiagnosisInformation extends Component<DiagnosisInformationProps> {
 
   render() {
     const {
-      diagnosisInformation,
       form: { getFieldDecorator },
       submitting,
     } = this.props;
@@ -456,7 +453,13 @@ class DiagnosisInformation extends Component<DiagnosisInformationProps> {
               <Row gutter={16}>
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.toothList}>
-                    <TextArea rows={3} />
+                    {getFieldDecorator('t_others', {
+                      rules: [{ required: false, message: 'Please enter the address' }],
+                    })(
+                      <TextArea
+                        rows={3}
+                      />,
+                    )}
                   </Form.Item>
                 </Col>
               </Row>
@@ -465,36 +468,31 @@ class DiagnosisInformation extends Component<DiagnosisInformationProps> {
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item>
                     {getFieldDecorator('is_radiograph_iopa', {
-                      // rules: [{ required: true, message: 'please select disease' }],
-                      initialValue: diagnosisInformation.is_radiograph_iopa || '',
+                      initialValue: false,
                       valuePropName: 'checked',
                     })(<Checkbox>IOPA</Checkbox>)}
                   </Form.Item>
                   <Form.Item>
                     {getFieldDecorator('is_radiograph_opg', {
-                      // rules: [{ required: true, message: 'please select disease' }],
-                      initialValue: diagnosisInformation.is_radiograph_opg || '',
+                      initialValue: false,
                       valuePropName: 'checked',
                     })(<Checkbox>OPG</Checkbox>)}
                   </Form.Item>
                   <Form.Item>
                     {getFieldDecorator('is_radiograph_occlusal', {
-                      // rules: [{ required: true, message: 'please select disease' }],
-                      initialValue: diagnosisInformation.is_radiograph_occlusal || '',
+                      initialValue: false,
                       valuePropName: 'checked',
                     })(<Checkbox>Occlusal</Checkbox>)}
                   </Form.Item>
                   <Form.Item>
                     {getFieldDecorator('is_radiograph_bitewing', {
-                      // rules: [{ required: true, message: 'please select disease' }],
-                      initialValue: diagnosisInformation.is_radiograph_bitewing || '',
+                      initialValue: false,
                       valuePropName: 'checked',
                     })(<Checkbox>Bitewing</Checkbox>)}
                   </Form.Item>
                   <Form.Item>
                     {getFieldDecorator('radiograph_others', {
-                      // rules: [{ required: true, message: 'please select disease' }],
-                      initialValue: diagnosisInformation.radiograph_others || '',
+                      initialValue: false,
                       valuePropName: 'checked',
                     })(<Checkbox>Others</Checkbox>)}
                   </Form.Item>
@@ -507,14 +505,26 @@ class DiagnosisInformation extends Component<DiagnosisInformationProps> {
               <Row gutter={16}>
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.diagnosis}>
-                    <TextArea rows={3} />
+                    {getFieldDecorator('diagnosis', {
+                      rules: [{ required: true, message: 'Please enter the diagnosis' }],
+                    })(
+                      <TextArea
+                        rows={3}
+                      />,
+                    )}
                   </Form.Item>
                 </Col>
               </Row>
               <Row gutter={16}>
                 <Col lg={24} md={24} sm={24}>
                   <Form.Item label={fieldLabels.treatmentPlan}>
-                    <TextArea rows={3} />
+                    {getFieldDecorator('treatment_plan', {
+                      rules: [{ required: false, message: 'Please enter the treatment plan' }],
+                    })(
+                      <TextArea
+                        rows={3}
+                      />,
+                    )}
                   </Form.Item>
                 </Col>
               </Row>
