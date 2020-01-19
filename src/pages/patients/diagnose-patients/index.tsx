@@ -11,7 +11,6 @@ import {
   List,
   Menu,
   Modal,
-  Progress,
   Radio,
   Result,
   Row,
@@ -25,8 +24,10 @@ import {PageHeaderWrapper} from '@ant-design/pro-layout';
 import {connect} from 'dva';
 import moment from 'moment';
 import {StateType} from './model';
-import {BasicListItemDataType} from './data.d';
+import {IDiagnosisPatientInformation} from './data.d';
 import styles from './style.less';
+import Link from 'umi/link';
+import router from 'umi/router';
 
 const FormItem = Form.Item;
 const RadioButton = Radio.Button;
@@ -34,35 +35,35 @@ const RadioGroup = Radio.Group;
 const SelectOption = Select.Option;
 const {Search, TextArea} = Input;
 
-interface BasicListProps extends FormComponentProps {
-  listBasicList: StateType;
+interface DiagnosisPatientInfoProps extends FormComponentProps {
+  listDiagnosisPatientInfo: StateType;
   dispatch: Dispatch<any>;
   loading: boolean;
 }
 
-interface BasicListState {
+interface DiagnosisPatientInfoState {
   visible: boolean;
   done: boolean;
-  current?: Partial<BasicListItemDataType>;
+  current?: Partial<IDiagnosisPatientInformation>;
 }
 
 @connect(
   ({
-     listBasicList,
+     listDiagnosisPatientInfo,
      loading,
    }: {
-    listBasicList: StateType;
+    listDiagnosisPatientInfo: StateType;
     loading: {
       models: { [key: string]: boolean };
     };
   }) => ({
-    listBasicList,
-    loading: loading.models.listBasicList,
+    listDiagnosisPatientInfo,
+    loading: loading.models.listDiagnosisPatientInfo,
   }),
 )
-class BasicList extends Component<BasicListProps,
-  BasicListState> {
-  state: BasicListState = {visible: false, done: false, current: undefined};
+class DiagnosisPatientInformation extends Component<DiagnosisPatientInfoProps,
+  DiagnosisPatientInfoState> {
+  state: DiagnosisPatientInfoState = {visible: false, done: false, current: undefined};
 
   formLayout = {
     labelCol: {span: 7},
@@ -74,7 +75,7 @@ class BasicList extends Component<BasicListProps,
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch({
-      type: 'listBasicList/fetch',
+      type: 'listDiagnosisPatientInfo/fetch',
       payload: {
         count: 5,
       },
@@ -88,11 +89,15 @@ class BasicList extends Component<BasicListProps,
     });
   };
 
-  showEditModal = (item: BasicListItemDataType) => {
+  showAttendModal = (item: IDiagnosisPatientInformation) => {
     this.setState({
       visible: true,
       current: item,
     });
+  };
+
+  showAttendPage = (item: IDiagnosisPatientInformation) => {
+    router.push(`/patients/add-patients/${item.id}`);
   };
 
   handleDone = () => {
@@ -117,13 +122,13 @@ class BasicList extends Component<BasicListProps,
     const id = current ? current.id : '';
 
     setTimeout(() => this.addBtn && this.addBtn.blur(), 0);
-    form.validateFields((err: string | undefined, fieldsValue: BasicListItemDataType) => {
+    form.validateFields((err: string | undefined, fieldsValue: IDiagnosisPatientInformation) => {
       if (err) return;
       this.setState({
         done: true,
       });
       dispatch({
-        type: 'listBasicList/submit',
+        type: 'listDiagnosisPatientInfo/submit',
         payload: {id, ...fieldsValue},
       });
     });
@@ -132,14 +137,14 @@ class BasicList extends Component<BasicListProps,
   deleteItem = (id: string) => {
     const {dispatch} = this.props;
     dispatch({
-      type: 'listBasicList/submit',
+      type: 'listDiagnosisPatientInfo/submit',
       payload: {id},
     });
   };
 
   render() {
     const {
-      listBasicList: {list},
+      listDiagnosisPatientInfo: {list},
       loading,
     } = this.props;
     const {
@@ -148,15 +153,15 @@ class BasicList extends Component<BasicListProps,
 
     const {visible, done, current = {}} = this.state;
 
-    const editAndDelete = (key: string, currentItem: BasicListItemDataType) => {
-      if (key === 'edit') this.showEditModal(currentItem);
+    const attendAndDelete = (key: string, currentItem: IDiagnosisPatientInformation) => {
+      if (key === 'attend') this.showAttendPage(currentItem);
       else if (key === 'delete') {
         Modal.confirm({
           title: 'Delete Task',
           content: 'Are You Sure You Want To Delete This Task？',
           okText: 'confirm',
           cancelText: 'cancel',
-          onOk: () => this.deleteItem(currentItem.id),
+          onOk: () => this.deleteItem(currentItem.id.toString()),
         });
       }
     };
@@ -197,32 +202,34 @@ class BasicList extends Component<BasicListProps,
     };
 
     const ListContent = ({
-                           data: {owner, createdAt, percent, status},
+                           data: {joining_date, sex, age},
                          }: {
-      data: BasicListItemDataType;
+      data: IDiagnosisPatientInformation;
     }) => (
       <div className={styles.listContent}>
         <div className={styles.listContentItem}>
-          <span>Owner</span>
-          <p>{owner}</p>
+          <span>Sex</span>
+          <p>{sex}</p>
         </div>
         <div className={styles.listContentItem}>
-          <span>开始时间</span>
-          <p>{moment(createdAt).format('YYYY-MM-DD HH:mm')}</p>
+          <span>Joining Date</span>
+          <p>{moment(joining_date).format('YYYY-MM-DD HH:mm')}</p>
         </div>
         <div className={styles.listContentItem}>
-          <Progress percent={percent} status={status} strokeWidth={6} style={{width: 180}}/>
+          {/* <Progress percent={age} status={status} strokeWidth={6} style={{width: 180}}/> */}
+          <span>Age</span>
+          <p>{age}</p>
         </div>
       </div>
     );
 
     const MoreBtn: React.FC<{
-      item: BasicListItemDataType;
+      item: IDiagnosisPatientInformation;
     }> = ({item}) => (
       <Dropdown
         overlay={
-          <Menu onClick={({key}) => editAndDelete(key, item)}>
-            <Menu.Item key="edit">Edit</Menu.Item>
+          <Menu onClick={({key}) => attendAndDelete(key, item)}>
+            <Menu.Item key="attend">Attend</Menu.Item>
             <Menu.Item key="delete">Delete</Menu.Item>
           </Menu>
         }
@@ -254,13 +261,13 @@ class BasicList extends Component<BasicListProps,
           <FormItem label="mission name" {...this.formLayout}>
             {getFieldDecorator('title', {
               rules: [{required: true, message: 'Please enter a task name'}],
-              initialValue: current.title,
+              initialValue: current.first_name,
             })(<Input placeholder="please enter"/>)}
           </FormItem>
           <FormItem label="开始时间" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
               rules: [{required: true, message: '请选择开始时间'}],
-              initialValue: current.createdAt ? moment(current.createdAt) : null,
+              initialValue: current.joining_date ? moment(current.joining_date) : null,
             })(
               <DatePicker
                 showTime
@@ -273,7 +280,7 @@ class BasicList extends Component<BasicListProps,
           <FormItem label="任务负责人" {...this.formLayout}>
             {getFieldDecorator('owner', {
               rules: [{required: true, message: '请选择任务负责人'}],
-              initialValue: current.owner,
+              initialValue: current.sex,
             })(
               <Select placeholder="请选择">
                 <SelectOption value="付晓晓">付晓晓</SelectOption>
@@ -284,7 +291,7 @@ class BasicList extends Component<BasicListProps,
           <FormItem {...this.formLayout} label="产品描述">
             {getFieldDecorator('subDescription', {
               rules: [{message: '请输入至少五个字符的产品描述！', min: 5}],
-              initialValue: current.subDescription,
+              initialValue: current.chief_compliant,
             })(<TextArea rows={4} placeholder="请输入至少五个字符"/>)}
           </FormItem>
         </Form>
@@ -338,21 +345,22 @@ class BasicList extends Component<BasicListProps,
                   <List.Item
                     actions={[
                       <a
-                        key="edit"
+                        key="attend"
                         onClick={e => {
                           e.preventDefault();
-                          this.showEditModal(item);
+                          router.push(`/patients/add-patients/${item.id}`);
+                          // <Link to="/patients/add-patients">go</Link>;
                         }}
                       >
-                        edit
+                        attend
                       </a>,
                       <MoreBtn key="more" item={item}/>,
                     ]}
                   >
                     <List.Item.Meta
-                      avatar={<Avatar src={item.logo} shape="square" size="large"/>}
-                      title={<a href={item.href}>{item.title}</a>}
-                      description={item.subDescription}
+                      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" shape="square" size="large"/>}
+                      title={<a href="http://localhost">{item.first_name}</a>}
+                      description={item.chief_compliant}
                     />
                     <ListContent data={item}/>
                   </List.Item>
@@ -378,4 +386,4 @@ class BasicList extends Component<BasicListProps,
   }
 }
 
-export default Form.create<BasicListProps>()(BasicList);
+export default Form.create<DiagnosisPatientInfoProps>()(DiagnosisPatientInformation);

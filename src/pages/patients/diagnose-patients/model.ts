@@ -2,10 +2,10 @@ import {AnyAction, Reducer} from 'redux';
 import {EffectsCommandMap} from 'dva';
 import {addFakeList, queryFakeList, removeFakeList, updateFakeList} from './service';
 
-import {BasicListItemDataType} from './data.d';
+import {IDiagnosisPatientInformation} from './data.d';
 
 export interface StateType {
-  list: BasicListItemDataType[];
+  list: IDiagnosisPatientInformation[];
 }
 
 export type Effect = (
@@ -28,7 +28,7 @@ export interface ModelType {
 }
 
 const Model: ModelType = {
-  namespace: 'listBasicList',
+  namespace: 'listDiagnosisPatientInfo',
 
   state: {
     list: [],

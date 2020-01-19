@@ -211,6 +211,13 @@ export default {
                   component: './patients/add-patients',
                 },
                 {
+                  name: 'add-patients',
+                  hideInMenu: true,
+                  path: '/patients/add-patients/:patient',
+                  component: './patients/add-patients',
+                },
+                // { path: '/dashboard/:page', hideInMenu: true, name: 'analysis', component: './Dashboard/Analysis' },
+                {
                   name: 'edit-patients',
                   path: '/patients/edit-patients',
                   component: './patients/edit-patients',
