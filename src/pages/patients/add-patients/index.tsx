@@ -8,6 +8,8 @@ import {connect} from 'dva';
 import TextArea from 'antd/lib/input/TextArea';
 import FooterToolbar from './components/FooterToolbar';
 import styles from './style.less';
+import { RouteComponentProps } from 'react-router';
+import { StateType } from '@/pages/table/model';
 
 const {Option} = Select;
 const {RangePicker} = DatePicker;
@@ -102,7 +104,7 @@ interface AdvancedFormProps extends FormComponentProps {
 @connect(({loading}: { loading: { effects: { [key: string]: boolean } } }) => ({
   submitting: loading.effects['formAdvancedForm/submitAdvancedForm'],
 }))
-class AdvancedForm extends Component<AdvancedFormProps> {
+class AdvancedForm extends Component<AdvancedFormProps & RouteComponentProps> {
   state = {
     width: '100%',
     disabledSmoking: true,
@@ -111,6 +113,7 @@ class AdvancedForm extends Component<AdvancedFormProps> {
 
   componentDidMount() {
     window.addEventListener('resize', this.resizeFooterToolbar, {passive: true});
+    console.log("Props_Details", this.props.match.params.patient);
   }
 
   componentWillUnmount() {
