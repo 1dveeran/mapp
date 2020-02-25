@@ -22,11 +22,9 @@ import {PageHeaderWrapper} from '@ant-design/pro-layout';
 import {SorterResult} from 'antd/es/table';
 import {connect} from 'dva';
 import moment from 'moment';
-import {StateType} from './model';
-import CreateForm from './components/CreateForm';
 import {StandardTableColumnProps} from './components/StandardTable';
 import UpdateForm, {FormValsType} from './components/UpdateForm';
-import {TableListItem, TableListPagination, TableListParams} from './data';
+import {IPatientList} from './data';
 
 import styles from './style.less';
 //Import React Table
@@ -46,52 +44,60 @@ type IStatusMapType = 'default' | 'processing' | 'success' | 'error';
 const statusMap = ['default', 'processing', 'success', 'error'];
 const status = ['关闭', '运行中', '已上线', '异常'];
 
-interface TableListProps extends FormComponentProps {
+interface PatientListProps extends FormComponentProps {
   dispatch: Dispatch<any>;
   loading: boolean;
-  listTableList: StateType;
+  patientListInfo: IPatientList;
 }
 
-interface TableListState {
-  modalVisible: boolean;
-  updateModalVisible: boolean;
-  expandForm: boolean;
-  selectedRows: TableListItem[];
-  formValues: { [key: string]: string };
-  stepFormValues: Partial<TableListItem>;
-}
+// interface TableListState {
+//   modalVisible: boolean;
+//   updateModalVisible: boolean;
+//   expandForm: boolean;
+//   selectedRows: ITableListItem[];
+//   formValues: { [key: string]: string };
+//   stepFormValues: Partial<ITableListItem>;
+// }
 
 /* eslint react/no-multi-comp:0 */
+// @connect(
+//   ({
+//      listTableList,
+//      loading,
+//    }: {
+//     listTableList: TableListItem;
+//     loading: {
+//       models: {
+//         [key: string]: boolean;
+//       };
+//     };
+//   }) => ({
+//     listTableList,
+//     loading: loading.models.rule,
+//   }),
+// )
 @connect(
   ({
-     listTableList,
      loading,
+     patientList,
    }: {
-    listTableList: StateType;
-    loading: {
-      models: {
-        [key: string]: boolean;
-      };
-    };
+    loading: { effects: { [key: string]: boolean } };
+    patientList: { patientListInfo: IPatientList };
   }) => ({
-    listTableList,
-    loading: loading.models.rule,
-  }),
-)
-class TableList extends Component<TableListProps, TableListState> {
-  state: TableListState = {
-    modalVisible: false,
-    updateModalVisible: false,
-    expandForm: false,
-    selectedRows: [],
-    formValues: {},
-    stepFormValues: {},
+    submitting: loading.effects['patientList/savePatientList'],
+    patientListInfo: patientList.patientListInfo,
+  }))
+class PatientListInfo extends Component<PatientListProps> {
+  state = {
+    width: '100%',
+    disabledSmoking: true,
+    disabledPregnancyDueDate: true,
   };
 
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch({
-      type: 'listTableList/fetch',
+      type: 'patientList/fetch',
     });
   }
 
@@ -169,7 +175,7 @@ class TableList extends Component<TableListProps, TableListState> {
     }
   };
 
-  handleSelectRows = (rows: TableListItem[]) => {
+  handleSelectRows = (rows: ITableListItem[]) => {
     this.setState({
       selectedRows: rows,
     });
@@ -446,17 +452,17 @@ class TableList extends Component<TableListProps, TableListState> {
 
   render() {
     const {
-      listTableList: {data},
+      patientListInfo,
       loading,
-    } = this.props;
+    } = this.props;    
 
-    const {selectedRows, modalVisible, updateModalVisible, stepFormValues} = this.state;
-    const menu = (
-      <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
-        <Menu.Item key="remove">删除</Menu.Item>
-        <Menu.Item key="approval">批量审批</Menu.Item>
-      </Menu>
-    );
+    const { width } = this.state;
+    // const menu = (
+    //   <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
+    //     <Menu.Item key="remove">删除</Menu.Item>
+    //     <Menu.Item key="approval">批量审批</Menu.Item>
+    //   </Menu>
+    // );
 
     const parentMethods = {
       handleAdd: this.handleAdd,
@@ -470,74 +476,53 @@ class TableList extends Component<TableListProps, TableListState> {
     // const filterCaseInsensitive1 = ({ id, value }, row: any) =>
     // row[id] ? String(row[id].toLowerCase().includes(value.toLowerCase())) : true
 
-    return (
-      <PageHeaderWrapper>
-        <Card bordered={false}>
-          <div className={styles.tableList}>
-            <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleNewButtonClick()}>
-                New
-              </Button>
+    if(Object.entries(patientListInfo).length === 0) {
+      console.log("React Table: No data");
+      return null;
+    } else {
+      return (
+        <PageHeaderWrapper>
+          <Card bordered={false}>
+            <div className={styles.tableList}>
+              <div className={styles.tableListOperator}>
+                <Button icon="plus" type="primary" onClick={() => this.handleNewButtonClick()}>
+                  New
+                </Button>
+              </div>
+              <div>
+                <ReactTable
+                  data={patientListInfo} // Use data={[patientListInfo]} if response is not array type
+                  columns={[{
+                    Header: 'First Name',
+                    accessor: 'first_name',
+                  }, {
+                    Header: 'Last Name',
+                    accessor: 'last_name',
+                  },
+                    {
+                      Header: '',
+                      Cell: row => (
+                        <div>
+                          <button onClick={() => this.handleEdit(row.original)}>Edit</button>
+                        </div>
+                      )
+                    }
+                  ]}
+                  //getTrProps={this.onRowClick}
+                  filterable
+                  defaultFilterMethod={(filter, row, column) => this.filterCaseInsensitive(filter, row, column)}
+                  //defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}
+                  //defaultFilterMethod={filterCaseInsensitive1}
+                  defaultPageSize={3}
+                  pageSizeOptions={[3, 6]}
+                />
+              </div>
             </div>
-            <div>
-              <ReactTable
-                data={[{
-                  name: 'Roy Agasthyan',
-                  age: 26
-                }, {
-                  name: 'Sam Thomason',
-                  age: 22
-                }, {
-                  name: 'Michael Jackson',
-                  age: 36
-                }, {
-                  name: 'Samuel Roy',
-                  age: 56
-                }, {
-                  name: 'Rima Soy',
-                  age: 28
-                }, {
-                  name: 'Suzi Eliamma',
-                  age: 28
-                }]}
-                columns={[{
-                  Header: 'Name',
-                  accessor: 'name',
-                }, {
-                  Header: 'Age',
-                  accessor: 'age',
-                },
-                  {
-                    Header: '',
-                    Cell: row => (
-                      <div>
-                        <button onClick={() => this.handleEdit(row.original)}>Edit</button>
-                      </div>
-                    )
-                  }
-                ]}
-                //getTrProps={this.onRowClick}
-                filterable
-                defaultFilterMethod={(filter, row, column) => this.filterCaseInsensitive(filter, row, column)}
-                //defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}
-                //defaultFilterMethod={filterCaseInsensitive1}
-                defaultPageSize={3}
-                pageSizeOptions={[3, 6]}
-              />
-            </div>
-          </div>
-        </Card>
-        <CreateForm {...parentMethods} modalVisible={modalVisible}/>
-        {stepFormValues && Object.keys(stepFormValues).length ? (
-          <UpdateForm
-            {...updateMethods}
-            updateModalVisible={updateModalVisible}
-            values={stepFormValues}
-          />
-        ) : null}
-      </PageHeaderWrapper>
-    );
+          </Card>          
+        </PageHeaderWrapper>
+      );
+    }    
   }
 }
 
-export default Form.create<TableListProps>()(TableList);
+export default Form.create<PatientListProps>()(PatientListInfo);

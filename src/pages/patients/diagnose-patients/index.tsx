@@ -348,7 +348,7 @@ class DiagnosisPatientInformation extends Component<DiagnosisPatientInfoProps,
                         key="attend"
                         onClick={e => {
                           e.preventDefault();
-                          router.push(`/patients/add-patients/${item.id}`);
+                          router.push(`/patients/patients-symptoms/${item.id}`);
                           // <Link to="/patients/add-patients">go</Link>;
                         }}
                       >

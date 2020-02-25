@@ -1,84 +1,53 @@
 import {AnyAction, Reducer} from 'redux';
 import {EffectsCommandMap} from 'dva';
-import {addRule, queryRule, removeRule, updateRule} from './service';
+import {queryPatientsList} from './service';
 
-import {TableListData} from './data.d';
+import {IPatientList} from './data.d';
 
-export interface StateType {
-  data: TableListData;
+export interface ModalState {
+  patientListInfo?: Partial<IPatientList>;
+  isLoading?: boolean;
 }
 
 export type Effect = (
   action: AnyAction,
-  effects: EffectsCommandMap & { select: <T>(func: (state: StateType) => T) => T },
+  effects: EffectsCommandMap & { select: <T>(func: (state: {}) => T) => T },
 ) => void;
 
 export interface ModelType {
   namespace: string;
-  state: StateType;
+  state: ModalState;
   effects: {
-    fetch: Effect;
-    add: Effect;
-    remove: Effect;
-    update: Effect;
+    fetch: Effect;   
   };
   reducers: {
-    save: Reducer<StateType>;
+    savePatientList: Reducer<ModalState>;
   };
 }
 
 const Model: ModelType = {
-  namespace: 'listTableList',
+  namespace: 'patientList',
 
   state: {
-    data: {
-      list: [],
-      pagination: {},
-    },
+    patientListInfo: {},
+    isLoading: false,
   },
 
   effects: {
-    * fetch({payload}, {call, put}) {
-      const response = yield call(queryRule, payload);
+    * fetch(_, { call, put }) {
+      const response = yield call(queryPatientsList);
       yield put({
-        type: 'save',
+        type: 'savePatientList',
         payload: response,
       });
-    },
-    * add({payload, callback}, {call, put}) {
-      const response = yield call(addRule, payload);
-      console.log('adding the data...');
-      yield put({
-        type: 'save',
-        payload: response,
-      });
-      console.log('calling call back...');
-      if (callback) callback();
-      console.log('finishing call back...');
-    },
-    * remove({payload, callback}, {call, put}) {
-      const response = yield call(removeRule, payload);
-      yield put({
-        type: 'save',
-        payload: response,
-      });
-      if (callback) callback();
-    },
-    * update({payload, callback}, {call, put}) {
-      const response = yield call(updateRule, payload);
-      yield put({
-        type: 'save',
-        payload: response,
-      });
-      if (callback) callback();
-    },
+      console.log('Download Log: ', response);
+    },    
   },
-
   reducers: {
-    save(state, action) {
+    savePatientList(state, action) {
       return {
         ...state,
-        data: action.payload,
+        patientListInfo: action.payload || {},
       };
     },
   },

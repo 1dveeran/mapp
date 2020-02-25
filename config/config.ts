@@ -216,6 +216,12 @@ export default {
                   path: '/patients/add-patients/:patient',
                   component: './patients/add-patients',
                 },
+                {
+                  name: 'patients-symptoms',
+                  hideInMenu: true,
+                  path: '/patients/patients-symptoms/:patient',
+                  component: './patients/patients-symptoms',
+                },
                 // { path: '/dashboard/:page', hideInMenu: true, name: 'analysis', component: './Dashboard/Analysis' },
                 {
                   name: 'edit-patients',
